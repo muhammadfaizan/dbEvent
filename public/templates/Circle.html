@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/Dashboard">Dashboard</a></li>
+                <li><a href="#/Events">Events</a></li>
+                <li class="active"><a href="#/Circle">Circle</a></li>
+                <li><a href="#/Levels">Levels</a></li>
+                <li><a href="#/Settings">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 thumbnail">
+            <div class="caption" >
+            <div><h3>My Friend Circle</h3></div>
+            <div class="row">
+                <div class="col-md-12">
+                <div class="thumbnail col-md-3" style="margin-right: 10px;" ng-repeat="friend in friends | orderBy:sortOrder" >
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <img class="img-circle" ng-src="{{friend.imgUrl}}" height="60" width="60">
+                                </div>
+                                <div class="col-md-7">
+                                    <h3>{{friend.userName}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-9 thumbnail">
+            <div class="caption">
+                <div><h3>Make Even More Friends</h3></div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="thumbnail col-md-3" style="margin-right: 10px;" ng-repeat="user in otherUsers | orderBy:sortOrder" >
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <img class="img-circle" ng-src="{{user.imgUrl}}" height="60" width="60">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <h4>{{user.userName}}</h4>
+                                    </div>
+                                    <div class="row">
+                                        <button class="btn btn-primary btn-sm" type="button" ng-click="addNewFriend(user.userId)"><span class="glyphicon glyphicon-plus"></span>Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="dbevent">
+<head>
+    <title>dbEvent</title>
+    <link rel="stylesheet" href="stylesheets/pace.css" />
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href='stylesheets/noti.css' />
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <script src="lib/jquery-2.1.0.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="javascripts/pace.min.js"></script>
+    <script src="javascripts/noti.js"></script>
+
+    <style>
+        .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+    </style>
+    <script>
+        $("#NotiPanel").on("click", function () {
+            ShowCrystalNotificationPanel()
+        });
+    </script>
+</head>
+<body ng-cloak>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">dbevent</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li id="noti"><a><span id="NotiPanel" class="badge"><span style="color: #ffffff; padding-right: 10px;" class="glyphicon glyphicon-bullhorn"></span>{{totalNotification}}</span></a></li>
+                <li>
+                    <form class="navbar-form" role="form"method="get" action="/logout">
+                        <button class="btn btn-danger" type="submit">Log out</button>
+                    </form>
+                </li>
+
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div ng-view>
+
+</div>
+
+<script src="lib/angular/angular.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-route.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-resource.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-sanitize.min.js" type="text/javascript"></script>
+<script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="javascripts/MyRoutes.js" type="text/javascript"></script>
+<script src="javascripts/controllers/LoginCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/homeCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/DashboardCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/CircleCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/EventsCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/showEventCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/LevelsCtrl.js" type="text/javascript"></script>
+<script src="javascripts/controllers/SettingsCtrl.js" type="text/javascript"></script>
+<script src="javascripts/services/EventData.js" type="text/javascript"></script>
+<script src="javascripts/services/UserData.js" type="text/javascript"></script>
+<script src="javascripts/services/FriendsData.js" type="text/javascript"></script>
+<script src="javascripts/services/Sockets.js" type="text/javascript"></script>
+</body>
+</html>

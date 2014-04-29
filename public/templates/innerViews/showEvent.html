@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/Dashboard">Dashboard</a></li>
+                <li class="active"><a href="#/Events">Events</a></li>
+                <li><a href="#/Circle">Circle</a></li>
+                <li><a href="#/Levels">Levels</a></li>
+                <li><a href="#/Settings">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="jumbotron">
+                    <h1 class="text-center">{{eventToShow.name}}</h1>
+                    <div class="row">
+                        <div class="col-md-8">
+                            Location: {{eventToShow.location}}<br>{{eventToShow.date}}<br>{{eventToShow.time}}
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <button class="btn btn-primary" type="button">Invite Friends</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  class="row bg-warning animated fadeInLeft" style="margin-bottom: 10px"  ng-repeat="comment in comments">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img class="img-circle" ng-src="{{comment.imgUrl}}" height="60" width="60">
+                    </div>
+                    <div class="col-md-11">
+                        <h4>{{comment.body}}</h4>
+                    </div>
+                </div >
+                <div style="color: darkslategray;"  class="bg-info ">
+                    {{comment.fullName}}
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <form role="form">
+                    <textarea rows="3" style="resize:none" class="form-control" ng-model="commentBody" placeholder="Comment"></textarea>
+                    <br>
+                    <button type="button" class="btn btn-info" ng-click="postComment(commentBody)">Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

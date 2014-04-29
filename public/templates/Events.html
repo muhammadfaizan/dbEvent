@@ -1,0 +1,183 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/Dashboard">Dashboard</a></li>
+                <li class="active"><a href="#/Events">Events</a></li>
+                <li><a href="#/Circle">Circle</a></li>
+                <li><a href="#/Levels">Levels</a></li>
+                <li><a href="#/Settings">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#/Events">All</a></li>
+                <li><a href="#/Events">Created</a></li>
+                <li><a href="#/Events">Invited</a></li>
+            </ul>
+            <div class="row" style="padding-top: 5px">
+                <div class="col-md-2 col-md-offset-10">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" ng-click="open()">
+                            Create Event
+                            <span class="glyphicon glyphicon-th"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="max-height: 400px; overflow-y: scroll; overflow-x: hidden">
+                <div class="col-md-12">
+                    <a href="#/Event/{{event.eventId}}" ng-repeat="event in allEvents">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="row" style="margin-top: -10px; margin-left: 10px;">
+                                        <h3>{{event.name}}</h3>
+                                        <div class="col-md-8">
+                                            <h4>{{event.location}}</h4>
+                                            date: {{event.date}}<br>
+                                            time: {{event.time}}<br>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--further edited by maneri -->
+            <!-- modal-->
+            <div>
+                <script type="text/ng-template" id="myModalContent.html">
+                    <div class="modal-header">
+                        <h3>{{event.name}}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <form name="newEventForm" role="form" class="col-md-12">
+                                <div class="row">
+
+                                <div class="col-md-12">
+                                <!--name -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="eventName">Event Name</label>
+                                            <input id="eventName" class="form-control" type="text" required ng-model="event.name" placeholder="Name of your Event...."/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<div class="row">-->
+
+                                <div class="row">
+                                <!-- datetime picker-->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="eventDate">Event Date: </label>
+                                                    <p class="input-group">
+                                                        <input type="date" class="form-control" name="bday" ng-model="event.date">
+                                                        </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label for="eventTime">Event Time:</label>
+                                            <!-- timepciker -->
+                                            <div>
+
+                                                <div class="row">
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <select name="month" class = "form-control input-lg"  ng-model="event.hour">
+                                                            <option value="01">1</option>
+                                                            <option value="02">2</option>
+                                                            <option value="03">3</option>
+                                                            <option value="04">4</option>
+                                                            <option value="05">5</option>
+                                                            <option value="06">6</option>
+                                                            <option value="07">7</option>
+                                                            <option value="08">8</option>
+                                                            <option value="09">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                        </select>                        </div>
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <select name="month" class = "form-control input-lg"  ng-model="event.minute">
+                                                            <option  value="00">00</option>
+                                                            <option value="30">30</option>
+                                                            </select>
+                                                            </div>
+                                                    <div class="col-xs-4 col-md-4">
+                                                        <select name="month" class = "form-control input-lg"  ng-model="event.meridian">
+                                                            <option  value="00">am</option>
+                                                            <option value="12">pm</option>
+                                                            </select>
+                                                    </div>
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    <!-- -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="eventLocation">Event Location:</label>
+                                <input id="eventLocation" class="form-control" type="text" ng-model="event.location" placeholder="Address of Event...." />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="eventImageUrl"> Image:</label>
+                                <input id="eventImageUrl" class="form-control" type="url" ng-model="event.imageId" class="input-xlarge" placeholder="Url of image...."/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                            <img class="col-md-8" ng-src="{{event.imageId}}" src=""/>
+                    </div>
+
+                    </div>
+
+                    <!-- Friend List -->
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="person in FL">{{person.name}}</li>
+                        </ul>
+                    </div>
+
+                    </div>
+
+                    </form>
+
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" ng-click="ok(event)">Save</button>
+                        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+                    </div>
+                </script>
+
+
+                <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+            </div>
+            <!-- -->
+
+        </div>
+    </div>
+</div>
